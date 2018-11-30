@@ -1,7 +1,7 @@
 (function anon() {
   const list = document.querySelector('.list');
-
   for (let i = 0; i < menu.length; i++) {
+
     const firstNestLi = document.createElement('li');
     const firstNest = document.createElement('span');
     firstNest.classList.add('arrow-black');
@@ -64,13 +64,21 @@
     });
   });
 
-  const openThird = document.querySelectorAll('[data-action=third]');
-  openThird.forEach((element) => {
+  const openThird = document.querySelectorAll('.arrow-white');
+  openThird.forEach(element => {
     element.addEventListener('click', (e) => {
-      e.preventDefault();
-      const thirdContent = e.target.parentNode.querySelector('.thirdContent');
+      const thirdContent = e.target.querySelector('.thirdContent');
       thirdContent.classList.toggle('active');
-      e.target.parentNode.classList.toggle('down-white');
+      e.target.classList.toggle('down-white');
     });
   });
+  // const openThird = document.querySelectorAll('[data-action=third]');
+  // openThird.forEach((element) => {
+  //   element.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     const thirdContent = e.target.parentNode.querySelector('.thirdContent');
+  //     thirdContent.classList.toggle('active');
+  //     e.target.parentNode.classList.toggle('down-white');
+  //   });
+  // });
 }());
