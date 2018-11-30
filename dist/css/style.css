@@ -5,10 +5,51 @@
 .list, .list2 {
   margin-left: 40px; }
   .list ul, .list li, .list a, .list2 ul, .list2 li, .list2 a {
+    list-style-type: none;
     text-decoration: none;
     padding: 5px;
     font-size: 22px;
     font-family: 'Roboto', sans-serif; }
+  .list a, .list2 a {
+    padding-left: 0; }
+  .list .circle, .list2 .circle {
+    list-style-type: circle; }
+  .list .arrow-black, .list2 .arrow-black {
+    position: relative; }
+    .list .arrow-black:before, .list2 .arrow-black:before {
+      position: absolute;
+      content: url("../images/arrow-black.svg");
+      top: 0;
+      left: -20px;
+      width: 15px;
+      height: 15px; }
+  .list .down:before, .list2 .down:before {
+    position: absolute;
+    content: url("../images/arrow-black.svg");
+    top: 7px;
+    left: -20px;
+    width: 15px;
+    height: 15px;
+    transform: rotate(90deg); }
+  .list .arrow-white, .list2 .arrow-white {
+    position: relative; }
+    .list .arrow-white:before, .list2 .arrow-white:before {
+      position: absolute;
+      content: url("../images/arrow-white.svg");
+      top: 0;
+      left: -20px;
+      width: 15px;
+      height: 15px; }
+  .list .down-white, .list2 .down-white {
+    position: relative; }
+    .list .down-white:before, .list2 .down-white:before {
+      position: absolute;
+      content: url("../images/arrow-white.svg");
+      top: 7px;
+      left: -20px;
+      width: 15px;
+      height: 15px;
+      transform: rotate(90deg); }
   .list .secondContent, .list2 .secondContent {
     display: none; }
   .list .thirdContent, .list2 .thirdContent {

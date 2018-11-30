@@ -4,6 +4,7 @@
   for (let i = 0; i < menu.length; i++) {
     const firstNestLi = document.createElement('li');
     const firstNest = document.createElement('span');
+    firstNest.classList.add('arrow-black');
     firstNest.dataset.action = 'second';
     firstNest.textContent = menu[i].title;
     list.appendChild(firstNestLi);
@@ -17,7 +18,9 @@
 
       for (let j = 0; j < menu[i].items.length; j++) {
         const secondNestLi = document.createElement('li');
+        
         if (menu[i].items[j].items) {
+          secondNestLi.classList.add('arrow-white');
           const secondNest = document.createElement('a');
           secondNest.dataset.action = 'third';
           if (menu[i].items[j].link) {
@@ -37,6 +40,7 @@
         if (menu[i].items[j].items) {
           for (let k = 0; k < menu[i].items[j].items.length; k++) {
             const thirdNestLi = document.createElement('li');
+            thirdNestLi.classList.add('circle');
             if (menu[i].items[j].items[k].link) {
               const thirdNest = document.createElement('a');
               thirdNest.setAttribute('href', menu[i].items[j].items[k].link);
@@ -53,12 +57,11 @@
     }
   }
   const openSecond = document.querySelectorAll('[data-action=second]');
-  console.log(openSecond);
   openSecond.forEach((element) => {
     element.addEventListener('click', (e) => {
-      e.preventDefault();
       const secondContent = e.target.parentNode.querySelector('.secondContent');
       secondContent.classList.toggle('active');
+      e.target.classList.toggle('down');
     });
   });
 
@@ -68,6 +71,7 @@
       e.preventDefault();
       const thirdContent = e.target.parentNode.querySelector('.thirdContent');
       thirdContent.classList.toggle('active');
+      e.target.parentNode.classList.toggle('down-white');
     });
   });
 }());
