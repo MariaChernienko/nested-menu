@@ -15,10 +15,9 @@
     firstNestLi.appendChild(secondNestUl);
 
     if (menu[i].items) {
-
       for (let j = 0; j < menu[i].items.length; j++) {
         const secondNestLi = document.createElement('li');
-        
+
         if (menu[i].items[j].items) {
           secondNestLi.classList.add('arrow-white');
           const secondNest = document.createElement('a');
@@ -61,7 +60,7 @@
     element.addEventListener('click', (e) => {
       const secondContent = e.target.parentNode.querySelector('.secondContent');
       secondContent.classList.toggle('active');
-      e.target.classList.toggle('down');
+      e.target.classList.toggle('down-black');
     });
   });
 

@@ -1,37 +1,47 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-.list, .list2 {
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+.list,
+.list2 {
   display: inline-block;
 }
-.list, .list2 {
+
+.list,
+.list2 {
   margin-left: 40px;
-  ul, li, a {
+  ul,
+  li,
+  a {
     list-style-type: none;
     text-decoration: none;
     padding: 5px;
     font-size: 22px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   }
+
   a {
     padding-left: 0;
   }
+
   .circle {
     list-style-type: circle;
   }
+
   .arrow-black {
     position: relative;
     &:before {
       position: absolute;
-      content: url('../images/arrow-black.svg');
+      content: url("../images/arrow-black.svg");
       top: 0;
       left: -20px;
       width: 15px;
       height: 15px;
+      transition: all 0.1s ease-out;
     }
   }
-  .down {
+
+  .down-black {
     &:before {
       position: absolute;
-      content: url('../images/arrow-black.svg');
+      content: url("../images/arrow-black.svg");
       top: 7px;
       left: -20px;
       width: 15px;
@@ -39,22 +49,25 @@
       transform: rotate(90deg);
     }
   }
+
   .arrow-white {
     position: relative;
     &:before {
       position: absolute;
-      content: url('../images/arrow-white.svg');
+      content: url("../images/arrow-white.svg");
       top: 0;
       left: -20px;
       width: 15px;
       height: 15px;
+      transition: all 0.1s ease-out;
     }
   }
+
   .down-white {
     position: relative;
     &:before {
       position: absolute;
-      content: url('../images/arrow-white.svg');
+      content: url("../images/arrow-white.svg");
       top: 7px;
       left: -20px;
       width: 15px;
@@ -62,12 +75,15 @@
       transform: rotate(90deg);
     }
   }
+
   .secondContent {
     display: none;
   }
+
   .thirdContent {
     display: none;
   }
+  
   .active {
     display: block;
   }
