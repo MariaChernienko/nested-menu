@@ -1,71 +1,73 @@
-var form = document.querySelector(".form-container");
-var btn = document.querySelector(".btn");
-var fields = document.querySelectorAll(".field");
+(function anon() {
+  const list = document.querySelector('.list');
 
-var textVal = document.querySelectorAll(".textVal");
-var emailVal = document.querySelector(".emailVal");
-var passwordVal = document.querySelector(".passwordVal");
+  for (let i = 0; i < menu.length; i++) {
+    const firstNestLi = document.createElement('li');
+    const firstNest = document.createElement('span');
+    firstNest.dataset.action = 'second';
+    firstNest.textContent = menu[i].title;
+    list.appendChild(firstNestLi);
+    firstNestLi.appendChild(firstNest);
 
+    const secondNestUl = document.createElement('ul');
+    secondNestUl.classList.add('secondContent');
+    firstNestLi.appendChild(secondNestUl);
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
-  fields.forEach(element => {
-    element.classList.remove("empty");
-    if (element.value == 0) {
-      element.classList.add("empty");
-    } 
-  });
-  var emptyFieldsCounter = document.querySelectorAll(".empty").length;
-  if (emptyFieldsCounter == 0) {
-    form.submit();
-  }
-});
+    if (menu[i].items) {
 
-textVal.forEach(element => {
-  element.addEventListener("input", function(event) {
-    deleteErrors();
-    var abs = element.value;
-    this.style.border = "1px solid green";
+      for (let j = 0; j < menu[i].items.length; j++) {
+        const secondNestLi = document.createElement('li');
+        if (menu[i].items[j].items) {
+          const secondNest = document.createElement('a');
+          secondNest.dataset.action = 'third';
+          if (menu[i].items[j].link) {
+            secondNest.setAttribute('href', menu[i].items[j].link);
+          }
+          secondNest.textContent = menu[i].items[j].title;
+          secondNestUl.appendChild(secondNestLi);
+          secondNestLi.appendChild(secondNest);
+        } else {
+          secondNestLi.textContent = menu[i].items[j].title;
+          secondNestUl.appendChild(secondNestLi);
+        }
+        const thirdNestUl = document.createElement('ul');
+        thirdNestUl.classList.add('thirdContent');
+        secondNestLi.appendChild(thirdNestUl);
 
-    if(abs.match(/['"]/)) {
-      addError(element, "This field can not include &#39 and &#34");
+        if (menu[i].items[j].items) {
+          for (let k = 0; k < menu[i].items[j].items.length; k++) {
+            const thirdNestLi = document.createElement('li');
+            if (menu[i].items[j].items[k].link) {
+              const thirdNest = document.createElement('a');
+              thirdNest.setAttribute('href', menu[i].items[j].items[k].link);
+              thirdNest.textContent = menu[i].items[j].items[k].title;
+              thirdNestUl.appendChild(thirdNestLi);
+              thirdNestLi.appendChild(thirdNest);
+            } else {
+              thirdNestLi.textContent = menu[i].items[j].items[k].title;
+              thirdNestUl.appendChild(thirdNestLi);
+            }
+          }
+        }
+      }
     }
+  }
+  const openSecond = document.querySelectorAll('[data-action=second]');
+  console.log(openSecond);
+  openSecond.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      e.preventDefault();
+      const secondContent = e.target.parentNode.querySelector('.secondContent');
+      secondContent.classList.toggle('active');
+    });
   });
-});
 
-emailVal.addEventListener("input", function(event) {
-  deleteErrors();
-  var abs = this.value;
-  this.style.border = "1px solid green";
-
-  if(!(abs.match(/[0-9a-z_]+@[0-9a-z_]+\.[a-z]{2,5}/i))) {
-    addError(emailVal, "This field should be like asd@asd.yu");
-  }
-});
-
-passwordVal.addEventListener("input", function(event) {
-  deleteErrors();
-  var abs = this.value;
-  this.style.border = "1px solid green";
-
-  if(!(abs.match(/[0-9a-z_]{6}/i))) {
-    addError(passwordVal, "At least six characters");
-  }
-});
-
-function addError(element, errorMessage) {
-  var error = document.createElement("div");
-  error.className = "error";
-  error.style.color = "red";
-  error.innerHTML = errorMessage;
-  element.parentElement.appendChild(error);
-  element.style.border = "1px solid red";
-}
-function deleteErrors() {
-  var errors = form.querySelectorAll(".error");
-  for(var i = 0; i < errors.length; i++) {
-    errors[i].remove();
-  }
-}
-
-
+  const openThird = document.querySelectorAll('[data-action=third]');
+  openThird.forEach((element) => {
+    element.addEventListener('click', (e) => {
+      e.preventDefault();
+      const thirdContent = e.target.parentNode.querySelector('.thirdContent');
+      thirdContent.classList.toggle('active');
+    });
+  });
+}());
