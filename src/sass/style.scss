@@ -1,24 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-.list,
-.list2 {
-  display: inline-block;
-}
 
-.list,
-.list2 {
+.list {
   margin-left: 40px;
   ul,
   li,
   a {
     list-style-type: none;
     text-decoration: none;
-    padding: 5px;
     font-size: 22px;
     font-family: "Roboto", sans-serif;
   }
 
   a {
     padding-left: 0;
+  }
+
+  li {
+    padding-top: 10px;
   }
 
   .circle {
@@ -55,7 +53,7 @@
     &:before {
       position: absolute;
       content: url("../images/arrow-white.svg");
-      top: 0;
+      top: 9px;
       left: -20px;
       width: 15px;
       height: 15px;
@@ -68,7 +66,7 @@
     &:before {
       position: absolute;
       content: url("../images/arrow-white.svg");
-      top: 7px;
+      top: 16px;
       left: -20px;
       width: 15px;
       height: 15px;
@@ -77,14 +75,27 @@
   }
 
   .secondContent {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+
+    transition: all 0.1s linear;
   }
 
   .thirdContent {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: all 0.1s linear;
   }
-  
+
   .active {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+  }
+  @keyframes myAnim {
+    from { margin-left:-20%; } 
+    to { margin-left:100%; }
   }
 }

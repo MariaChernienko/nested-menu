@@ -1,33 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-.list,
-.list2 {
-  display: inline-block; }
-
-.list,
-.list2 {
+.list {
   margin-left: 40px; }
   .list ul,
   .list li,
-  .list a,
-  .list2 ul,
-  .list2 li,
-  .list2 a {
+  .list a {
     list-style-type: none;
     text-decoration: none;
-    padding: 5px;
     font-size: 22px;
     font-family: "Roboto", sans-serif; }
-  .list a,
-  .list2 a {
+  .list a {
     padding-left: 0; }
-  .list .circle,
-  .list2 .circle {
+  .list li {
+    padding-top: 10px; }
+  .list .circle {
     list-style-type: circle; }
-  .list .arrow-black,
-  .list2 .arrow-black {
+  .list .arrow-black {
     position: relative; }
-    .list .arrow-black:before,
-    .list2 .arrow-black:before {
+    .list .arrow-black:before {
       position: absolute;
       content: url("../images/arrow-black.svg");
       top: 0;
@@ -35,8 +24,7 @@
       width: 15px;
       height: 15px;
       transition: all 0.1s ease-out; }
-  .list .down-black:before,
-  .list2 .down-black:before {
+  .list .down-black:before {
     position: absolute;
     content: url("../images/arrow-black.svg");
     top: 7px;
@@ -44,36 +32,43 @@
     width: 15px;
     height: 15px;
     transform: rotate(90deg); }
-  .list .arrow-white,
-  .list2 .arrow-white {
+  .list .arrow-white {
     position: relative; }
-    .list .arrow-white:before,
-    .list2 .arrow-white:before {
+    .list .arrow-white:before {
       position: absolute;
       content: url("../images/arrow-white.svg");
-      top: 0;
+      top: 9px;
       left: -20px;
       width: 15px;
       height: 15px;
       transition: all 0.1s ease-out; }
-  .list .down-white,
-  .list2 .down-white {
+  .list .down-white {
     position: relative; }
-    .list .down-white:before,
-    .list2 .down-white:before {
+    .list .down-white:before {
       position: absolute;
       content: url("../images/arrow-white.svg");
-      top: 7px;
+      top: 16px;
       left: -20px;
       width: 15px;
       height: 15px;
       transform: rotate(90deg); }
-  .list .secondContent,
-  .list2 .secondContent {
-    display: none; }
-  .list .thirdContent,
-  .list2 .thirdContent {
-    display: none; }
-  .list .active,
-  .list2 .active {
-    display: block; }
+  .list .secondContent {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: all 0.1s linear; }
+  .list .thirdContent {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    transition: all 0.1s linear; }
+  .list .active {
+    opacity: 1;
+    visibility: visible;
+    height: 100%; }
+
+@keyframes myAnim {
+  from {
+    margin-left: -20%; }
+  to {
+    margin-left: 100%; } }
